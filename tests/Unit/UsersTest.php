@@ -20,4 +20,23 @@ class UsersTest extends TestCase
 
         $this->assertEquals('Jane', $user->team->name);
     }
+
+    /** @test */
+    public function a_default_user_is_not_an_admin()
+    {
+        $user = factory('App\User')->create();
+
+        $this->assertFalse($user->isAdmin());
+
+    }
+
+    /** @test */
+    public function an_admin_user_is_an_admin()
+    {
+        $admin = factory('App\User')
+            ->states('admin')
+            ->create();
+
+        $this->assertTrue($admin->isAdmin());
+    }
 }
