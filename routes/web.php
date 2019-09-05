@@ -30,3 +30,6 @@ Route::get('/admin', 'HomeController@admin')
     ->middleware('is_admin')
     ->name('admin');
 
+Route::post('/books', 'BooksController@store');
+Route::patch('/books/{book}', 'BooksController@update');
+
